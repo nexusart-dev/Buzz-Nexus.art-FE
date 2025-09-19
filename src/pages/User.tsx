@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { socket } from "../socket";
-import { Button, TextField, Box, Typography } from "@mui/material";
+import { Button, TextField, Box, Typography, Paper } from "@mui/material";
 
 export default function User() {
   const [name, setName] = useState("");
@@ -33,13 +33,26 @@ export default function User() {
         <Typography variant="h5" sx={{ fontWeight: "bold" }}>
           Type Your Name
         </Typography>
-        <TextField
-          label="Your Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          disabled={buzzed}
-          sx={{ mt: 2 }}
-        />
+        <Paper
+          elevation={3}
+          sx={{
+            p: 3,
+            my: 3,
+            height: 100,
+            width: 300,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <TextField
+            label="Your Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            disabled={buzzed}
+            sx={{ mt: 2 }}
+          />
+        </Paper>
         <Box mt={2}>
           <Button
             variant="contained"

@@ -3,15 +3,18 @@ import { socket } from "../socket";
 import { Button, Box, Typography, Paper } from "@mui/material";
 
 export default function Admin() {
-  const [winner, setWinner] = useState<string | null>(null);
+  const [winners, setWinners] = useState<string[]>([]);
 
   useEffect(() => {
     socket.on("buzzed", (name: string) => {
-      setWinner(name);
+      setWinners((prev) => {
+        if (prev.includes(name)) return prev;
+        return [...prev, name];
+      });
     });
 
     socket.on("reset", () => {
-      setWinner(null);
+      setWinners([]);
     });
 
     return () => {
@@ -42,7 +45,7 @@ export default function Admin() {
         }}
       >
         <Typography variant="h4" sx={{ mb: 3, fontWeight: "bold" }}>
-          Who the first :
+          Who buzzed first:
         </Typography>
 
         <Paper
@@ -50,16 +53,21 @@ export default function Admin() {
           sx={{
             p: 3,
             mb: 3,
-            height: 100,
+            minHeight: 120,
             width: 300,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          {winner ? (
-            <Typography variant="h4">
-              First Buzz: <span style={{color: 'red'}}>{winner}</span>
+          {winners.length > 0 ? (
+            <Typography variant="h5">
+              {winners.map((w, i) => (
+                <span key={i} style={{ color: "red" }}>
+                  {i + 1}. {w}
+                  <br />
+                </span>
+              ))}
             </Typography>
           ) : (
             <Typography variant="h6" sx={{ color: "grey" }}>
