@@ -36,7 +36,7 @@ export default function Shell({ children, actions, maxWidth = 1120 }: Props) {
         >
           <Box component="img" src="/nexus.png" alt="" sx={{ width: 36, height: 36, objectFit: "contain" }} />
           <Typography sx={{ fontFamily: fontDisplay, fontWeight: 700, fontSize: 18, letterSpacing: "-0.01em" }}>
-            Nexus.Art Buzz
+            Nexus.Art Pingo
           </Typography>
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", gap: 1.5, flexWrap: "wrap" }}>{actions}</Box>

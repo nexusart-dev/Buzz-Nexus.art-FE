@@ -87,7 +87,7 @@ export default function BuzzButton({ variant, onPress }: Props) {
             component="span"
             sx={{ fontFamily: fontDisplay, fontWeight: 800, fontSize: "clamp(40px, 12vw, 56px)", letterSpacing: "-0.02em" }}
           >
-            {variant === "offline" ? "…" : "Buzz!"}
+            {variant === "offline" ? "…" : "Pingo!"}
           </Typography>
         )}
       </ButtonBase>
