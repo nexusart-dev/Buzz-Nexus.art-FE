@@ -127,7 +127,7 @@ export default function Admin() {
               }}
             >
               {state.locked ? <LockIcon sx={{ fontSize: 15 }} /> : <LockOpenIcon sx={{ fontSize: 15 }} />}
-              {state.locked ? "Buzzer terkunci" : "Buzzer terbuka"}
+              {state.locked ? "Pingo terkunci" : "Pingo terbuka"}
             </Box>
           </Box>
 

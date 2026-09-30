@@ -118,7 +118,7 @@ export default function User() {
   let sub = "";
   if (!connected) {
     headline = "Menghubungkan ke server…";
-    sub = "Buzzer aktif kembali setelah tersambung.";
+    sub = "Pingo aktif kembali setelah tersambung.";
   } else if (buzzed && me.rank === 1) {
     headline = "Kamu tercepat!";
     sub = "Tunggu host melanjutkan ke ronde berikutnya.";

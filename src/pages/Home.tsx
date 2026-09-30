@@ -25,7 +25,7 @@ export default function Home() {
       <Box sx={{ textAlign: "center", pt: { xs: 2, md: 6 }, pb: 5 }}>
         <Box component="img" src="/nexus.png" alt="" sx={{ width: 112, height: 112, objectFit: "contain", mb: 2 }} />
         <Typography variant="h2" sx={{ fontSize: { xs: 34, sm: 48 }, lineHeight: 1.1 }}>
-          Buzzer kuis real-time
+          Pingo kuis real-time
         </Typography>
         <Typography sx={{ color: palette.muted, mt: 2, maxWidth: 460, mx: "auto", fontSize: { xs: 16, sm: 18 } }}>
           Siapa yang paling cepat langsung terlihat di layar host, lengkap dengan selisih waktunya.
