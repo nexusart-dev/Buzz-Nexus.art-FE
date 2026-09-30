@@ -8,13 +8,13 @@ const choices = [
   {
     to: "/user",
     title: "Saya pemain",
-    text: "Masukkan nama dan tekan buzzer secepat mungkin.",
+    text: "Masukkan nama dan tekan pingo secepat mungkin.",
     primary: true,
   },
   {
     to: "/admin",
     title: "Saya host",
-    text: "Lihat urutan buzz secara langsung dan atur ronde.",
+    text: "Lihat urutan ping secara langsung dan atur ronde.",
     primary: false,
   },
 ];

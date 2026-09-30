@@ -12,7 +12,7 @@ import { socket } from "../socket";
 import { fontDisplay, palette } from "../theme";
 import type { BuzzResult } from "../types";
 
-const NAME_KEY = "buzz:name";
+const NAME_KEY = "ping:name";
 const MAX_NAME = 24;
 
 function loadName(): string {
@@ -51,7 +51,7 @@ export default function User() {
     setDraft(clean);
   };
 
-  const buzz = useCallback(() => {
+  const ping = useCallback(() => {
     if (!canBuzz || sending.current || !name) return;
     sending.current = true;
     navigator.vibrate?.(40);
@@ -60,7 +60,7 @@ export default function User() {
       sending.current = false;
     }, 2000);
 
-    socket.emit("buzz", name, (res: BuzzResult) => {
+    socket.emit("ping", name, (res: BuzzResult) => {
       window.clearTimeout(release);
       sending.current = false;
       if (res.ok) return;
@@ -78,7 +78,7 @@ export default function User() {
             Siapa namamu?
           </Typography>
           <Typography sx={{ color: palette.muted, mt: 1, mb: 3 }}>
-            Nama ini akan tampil di layar host saat kamu menekan buzzer.
+            Nama ini akan tampil di layar host saat kamu menekan pingo.
           </Typography>
           <Box
             component="form"
@@ -105,7 +105,7 @@ export default function User() {
     );
   }
 
-  /* ---------------- Langkah 2: buzzer ---------------- */
+  /* ---------------- Langkah 2: pingo ---------------- */
   const myEntry = state.entries.find((e) => e.rank === me.rank);
   const leader = state.entries[0];
 
@@ -127,7 +127,7 @@ export default function User() {
     sub = myEntry ? `${myEntry.delta} ms setelah ${leader?.name ?? "yang tercepat"}` : "";
   } else if (state.locked) {
     headline = "Ronde ditutup";
-    sub = "Tunggu host membuka buzzer.";
+    sub = "Tunggu host membuka pingo.";
   }
 
   return (
@@ -155,7 +155,7 @@ export default function User() {
           </Button>
         </Box>
 
-        <BuzzButton variant={variant} onPress={buzz} />
+        <BuzzButton variant={variant} onPress={ping} />
 
         <Box aria-live="polite" sx={{ minHeight: 84 }}>
           <Typography

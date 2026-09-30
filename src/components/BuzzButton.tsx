@@ -44,7 +44,7 @@ export default function BuzzButton({ variant, onPress }: Props) {
       )}
       <ButtonBase
         disabled={!ready}
-        aria-label={ready ? "Tekan untuk buzz" : buzzed ? "Sudah buzz" : "Pingo tidak aktif"}
+        aria-label={ready ? "Tekan untuk ping" : buzzed ? "Sudah ping" : "Pingo tidak aktif"}
         // pointerdown → respons lebih cepat daripada menunggu click; Enter/Space tetap lewat click keyboard.
         onPointerDown={(e) => {
           if (e.pointerType !== "mouse" || e.button === 0) onPress();

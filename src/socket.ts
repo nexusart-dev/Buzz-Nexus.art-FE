@@ -7,7 +7,7 @@ import { io } from "socket.io-client";
  *     (jadi HP di jaringan WiFi yang sama ikut bisa terhubung)
  *  3. fallback ke alamat lama
  */
-const PROD_FALLBACK = "https://buzz-nexus-art-be.vercel.app";
+const PROD_FALLBACK = "https://ping-nexus-art-be.vercel.app";
 
 export const SERVER_URL: string =
   import.meta.env.VITE_SOCKET_URL ||
@@ -16,7 +16,7 @@ export const SERVER_URL: string =
 // autoConnect dimatikan: koneksi dibuka per halaman lewat useBuzzSocket.
 export const socket = io(SERVER_URL, { autoConnect: false });
 
-const CLIENT_ID_KEY = "buzz:clientId";
+const CLIENT_ID_KEY = "ping:clientId";
 
 function createId(): string {
   if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
@@ -26,7 +26,7 @@ function createId(): string {
   return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`;
 }
 
-/** ID anonim yang tetap sama meski halaman di-refresh, supaya status buzz tidak hilang. */
+/** ID anonim yang tetap sama meski halaman di-refresh, supaya status ping tidak hilang. */
 export function getClientId(): string {
   try {
     let id = localStorage.getItem(CLIENT_ID_KEY);

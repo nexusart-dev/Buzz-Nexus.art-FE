@@ -19,7 +19,7 @@ import { playBuzz, unlockAudio } from "../sound";
 import { fontDisplay, palette } from "../theme";
 import type { AdminAuthResult } from "../types";
 
-const PIN_KEY = "buzz:adminPin";
+const PIN_KEY = "ping:adminPin";
 
 function readPin(): string {
   try {
@@ -60,7 +60,7 @@ export default function Admin() {
 
   const { connected, state } = useBuzzSocket("admin", () => authenticate(readPin()));
 
-  // Bunyi saat ada pemain baru menekan buzzer (bukan saat halaman baru dibuka / reset).
+  // Bunyi saat ada pemain baru menekan pingo (bukan saat halaman baru dibuka / reset).
   const prevCount = useRef<number | null>(null);
   useEffect(() => {
     const count = state.entries.length;
@@ -146,9 +146,9 @@ export default function Admin() {
                   />
                 ))}
               </Box>
-              <Typography variant="h5">Menunggu buzz pertama</Typography>
+              <Typography variant="h5">Menunggu ping pertama</Typography>
               <Typography sx={{ color: palette.muted, mt: 1 }}>
-                Nama pemain akan muncul di sini begitu ada yang menekan buzzer.
+                Nama pemain akan muncul di sini begitu ada yang menekan pingo.
               </Typography>
             </Box>
           ) : (
@@ -248,7 +248,7 @@ export default function Admin() {
             disabled={!controlsEnabled}
             onClick={() => socket.emit("admin:lock", !state.locked)}
           >
-            {state.locked ? "Buka buzzer" : "Kunci buzzer"}
+            {state.locked ? "Buka pingo" : "Kunci pingo"}
           </Button>
 
           <Box sx={{ borderTop: `1px solid ${palette.line}`, pt: 2, mt: 0.5 }}>
